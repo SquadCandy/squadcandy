@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import { marca } from '../lib/datos';
+---
+<Base titulo={`Tu carrito | ${marca.nombre}`} descripcion="Revisa los productos de tu pedido" pagina="carrito">
+  <main class="pagina">
+    <div class="contenedor">
+      <h1>Tu carrito</h1>
+      <div id="carrito" class="carrito">
+        <noscript>Para usar el carrito necesitas activar JavaScript en tu navegador.</noscript>
+      </div>
+    </div>
+  </main>
+</Base>

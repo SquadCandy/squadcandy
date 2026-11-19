@@ -1,0 +1,58 @@
+---
+import '../styles/global.css';
+import { marca, estiloVars, urlFuentes, url, rutas, configTienda } from '../lib/datos';
+import { enlaceWhatsApp } from '../lib/datos';
+
+const { titulo, descripcion, pagina = 'inicio' } = Astro.props;
+const configJson = JSON.stringify(configTienda).replace(/</g, '\\u003c');
+const consulta = enlaceWhatsApp(marca.contacto.whatsapp, marca.contacto.mensaje);
+---
+<!doctype html>
+<html lang="es" style={estiloVars}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="icon" href={url(marca.logo)} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href={urlFuentes} />
+  </head>
+  <body data-pagina={pagina}>
+    <a class="salto" href="#contenido">Saltar al contenido</a>
+
+    <header class="encabezado">
+      <div class="contenedor">
+        <a class="marca" href={rutas.inicio}>
+          <img src={url(marca.logo)} alt="" width="48" height="48" />
+          <span>{marca.nombre}</span>
+        </a>
+        <nav class="menu" aria-label="Principal">
+          <a href={`${rutas.inicio}#productos`}>Productos</a>
+          <a href={`${rutas.inicio}#nosotros`}>Nosotros</a>
+          <a class="carrito-enlace" href={rutas.carrito}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+            <span>Carrito</span>
+            <span class="contador" data-contador hidden>0</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <div id="contenido" tabindex="-1"><slot /></div>
+
+    <footer class="pie">
+      <div class="contenedor">
+        <p>© {new Date().getFullYear()} {marca.nombre}. Proyecto escolar de Educación para el Trabajo.</p>
+        <p><a href={consulta} target="_blank" rel="noopener">¿Dudas? Escríbenos por WhatsApp</a></p>
+      </div>
+    </footer>
+
+    <p id="anuncios" class="solo-lectores" aria-live="polite"></p>
+    <script id="config-tienda" type="application/json" set:html={configJson} />
+    <script>
+      import '../scripts/tienda';
+    </script>
+  </body>
+</html>

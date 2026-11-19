@@ -1,0 +1,53 @@
+{
+  "nombre": "Mi Tienda",
+  "eslogan": "Escribe aquí tu eslogan",
+  "logo": "logo.svg",
+  "colores": {
+    "principal": "#1F6F5B",
+    "secundario": "#F4B942",
+    "fondo": "#F6F8F7",
+    "texto": "#1B2430"
+  },
+  "fuentes": {
+    "titulo": "Bricolage Grotesque",
+    "cuerpo": "Figtree"
+  },
+  "esquinas": "suaves",
+  "portada": {
+    "titulo": "Escribe aquí la frase principal de tu tienda",
+    "subtitulo": "Cuenta en una o dos líneas qué vendes y por qué es especial.",
+    "imagen": "productos/producto-1.svg",
+    "textoBoton": "Ver productos"
+  },
+  "nosotros": {
+    "titulo": "Quiénes somos",
+    "texto": "Somos estudiantes de 5.° de secundaria y creamos esta tienda durante el curso de Educación para el Trabajo. Aquí cuentas cómo nació tu idea y qué problema resuelve.",
+    "puntos": [
+      "Productos hechos con cuidado",
+      "Precios justos",
+      "Atención directa por WhatsApp"
+    ]
+  },
+  "contacto": {
+    "whatsapp": "51900000000",
+    "mensaje": "Hola, tengo una consulta sobre sus productos",
+    "horario": "Lunes a viernes, de 3:00 p. m. a 6:00 p. m.",
+    "instagram": "",
+    "facebook": ""
+  },
+  "tienda": {
+    "recojo": "Recojo en el colegio (lugar y hora a coordinar por WhatsApp)",
+    "ofreceDelivery": true,
+    "delivery": "Delivery en tu zona (se coordina por WhatsApp)",
+    "costoDelivery": 3
+  },
+  "pagos": {
+    "efectivo": "Pagas en efectivo al recibir o recoger tu pedido. Si puedes, ten el monto exacto.",
+    "yapePlin": {
+      "numero": "900000000",
+      "titular": "Nombre de ejemplo",
+      "qr": "",
+      "instrucciones": "Paga con Yape o Plin al número indicado y envía la captura del pago por WhatsApp."
+    }
+  }
+}

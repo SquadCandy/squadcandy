@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import { marca } from '../lib/datos';
+---
+<Base titulo={`Pedido confirmado | ${marca.nombre}`} descripcion="Resumen de tu pedido" pagina="confirmacion">
+  <main class="pagina">
+    <div class="contenedor">
+      <div id="confirmacion" class="confirmacion"></div>
+    </div>
+  </main>
+</Base>

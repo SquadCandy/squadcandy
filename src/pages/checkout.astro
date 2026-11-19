@@ -1,0 +1,99 @@
+---
+import Base from '../layouts/Base.astro';
+import { marca, url, rutas } from '../lib/datos';
+
+const { tienda, pagos } = marca;
+const costo = tienda.costoDelivery === 0 ? 'gratis' : `+ S/ ${tienda.costoDelivery.toFixed(2)}`;
+---
+<Base titulo={`Finalizar compra | ${marca.nombre}`} descripcion="Completa tus datos para confirmar el pedido" pagina="checkout">
+  <main class="pagina">
+    <div class="contenedor">
+      <h1>Finalizar compra</h1>
+
+      <div id="checkout-vacio" hidden>
+        <p>Tu carrito está vacío, así que no hay nada que pagar todavía.</p>
+        <a class="boton" href={`${rutas.inicio}#productos`}>Ver productos</a>
+      </div>
+
+      <div id="checkout-contenido" class="checkout">
+        <form id="form-pedido" novalidate>
+          <fieldset>
+            <legend>1. Tus datos de contacto</legend>
+            <div class="campo">
+              <label for="nombre">Nombre completo</label>
+              <input id="nombre" name="nombre" type="text" autocomplete="name" aria-describedby="err-nombre" />
+              <p class="error" id="err-nombre" hidden></p>
+            </div>
+            <div class="campo">
+              <label for="celular">Celular</label>
+              <input id="celular" name="celular" type="tel" inputmode="numeric" maxlength="9" placeholder="9 dígitos" autocomplete="tel-national" aria-describedby="err-celular" />
+              <p class="error" id="err-celular" hidden></p>
+            </div>
+            <div class="campo">
+              <label for="correo">Correo (opcional)</label>
+              <input id="correo" name="correo" type="email" autocomplete="email" aria-describedby="err-correo" />
+              <p class="error" id="err-correo" hidden></p>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>2. Entrega</legend>
+            <label class="opcion">
+              <input type="radio" name="entrega" value="recojo" checked />
+              <span><strong>Recojo</strong> <small>({tienda.recojo})</small></span>
+            </label>
+            {tienda.ofreceDelivery && (
+              <label class="opcion">
+                <input type="radio" name="entrega" value="delivery" />
+                <span><strong>Delivery</strong> <small>({costo}) {tienda.delivery}</small></span>
+              </label>
+            )}
+            <div id="datos-delivery" hidden>
+              <div class="campo">
+                <label for="direccion">Dirección</label>
+                <input id="direccion" name="direccion" type="text" autocomplete="street-address" aria-describedby="err-direccion" />
+                <p class="error" id="err-direccion" hidden></p>
+              </div>
+              <div class="campo">
+                <label for="referencia">Referencia (opcional)</label>
+                <input id="referencia" name="referencia" type="text" />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>3. Método de pago</legend>
+            <label class="opcion">
+              <input type="radio" name="pago" value="efectivo" aria-describedby="err-pago" />
+              <span><strong>Efectivo</strong></span>
+            </label>
+            <label class="opcion">
+              <input type="radio" name="pago" value="yapeplin" />
+              <span><strong>Yape / Plin</strong></span>
+            </label>
+            <p class="error" id="err-pago" hidden></p>
+
+            <div class="aviso-pago" id="panel-efectivo" hidden>
+              <p>{pagos.efectivo}</p>
+            </div>
+            <div class="aviso-pago" id="panel-yapeplin" hidden>
+              <p>{pagos.yapePlin.instrucciones}</p>
+              <p>Número: <strong>{pagos.yapePlin.numero}</strong> · Titular: <strong>{pagos.yapePlin.titular}</strong></p>
+              {pagos.yapePlin.qr
+                ? <img class="qr" src={url(pagos.yapePlin.qr)} alt="Código QR para pagar" width="160" height="160" />
+                : <div class="qr qr-ejemplo" role="img" aria-label="Espacio para el código QR">QR de ejemplo</div>}
+            </div>
+          </fieldset>
+
+          <button type="submit" class="boton">Confirmar pedido</button>
+          <p class="nota">Aún no se envía nada: en el siguiente paso enviarás tu pedido por WhatsApp.</p>
+        </form>
+
+        <aside class="resumen" aria-label="Resumen del pedido">
+          <h2>Resumen del pedido</h2>
+          <div id="resumen"></div>
+        </aside>
+      </div>
+    </div>
+  </main>
+</Base>
