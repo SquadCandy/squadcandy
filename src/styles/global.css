@@ -5,6 +5,7 @@
 
 /* ---------- Reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
 
 html {
   scroll-behavior: smooth;
@@ -501,7 +502,7 @@ button.boton { font: inherit; font-weight: 700; }
 .producto {
   display: flex;
   flex-direction: column;
-  gap: .6rem;
+  gap: 1rem;
   border-radius: var(--radio);
   transition: transform var(--transicion-lenta), box-shadow var(--transicion-lenta);
 }
@@ -547,6 +548,10 @@ button.boton { font: inherit; font-weight: 700; }
   justify-content: space-between;
   gap: 1rem;
   margin-top: .4rem;
+  padding: .5rem;
+}
+.producto-descripcion {
+  padding: 0 .5rem;
 }
 .producto h3 { font-size: 1.2rem; }
 .precio {
@@ -669,7 +674,7 @@ button.boton { font: inherit; font-weight: 700; }
   .carrito:has(.carrito-lista) { grid-template-columns: 1.6fr 1fr; }
 }
 
-.carrito-vacio, #checkout-vacio {
+.carrito-vacio {
   display: grid;
   gap: 1.25rem;
   justify-items: start;
@@ -679,9 +684,42 @@ button.boton { font: inherit; font-weight: 700; }
   border: 1px dashed color-mix(in srgb, var(--texto) 20%, transparent);
   animation: fadeIn 0.4s ease both;
 }
-.carrito-vacio p, #checkout-vacio p {
+.carrito-vacio p {
   font-size: 1.15rem;
   color: color-mix(in srgb, var(--texto) 85%, transparent);
+}
+
+.checkout-vacio {
+  display: grid;
+  gap: 1.25rem;
+  justify-items: center;
+  text-align: center;
+  padding: clamp(2.5rem, 6vw, 4rem) 2rem;
+  border-radius: var(--radio);
+  background: color-mix(in srgb, var(--texto) 3%, var(--fondo));
+  border: 2px dashed color-mix(in srgb, var(--texto) 18%, transparent);
+  max-width: 580px;
+  margin: 1.5rem auto 3rem;
+  animation: fadeIn 0.4s ease both;
+}
+.checkout-vacio-icono {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--principal) 12%, var(--fondo));
+  color: var(--principal);
+}
+.checkout-vacio h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+.checkout-vacio p {
+  font-size: 1.05rem;
+  opacity: .85;
+  max-width: 38ch;
+  margin: 0;
 }
 
 .carrito-lista { margin: 0; padding: 0; list-style: none; display: grid; gap: 1.25rem; }

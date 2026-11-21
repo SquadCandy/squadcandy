@@ -259,12 +259,24 @@ function pintarCarrito() {
 function iniciarCheckout() {
   const form = document.getElementById('form-pedido') as HTMLFormElement | null;
   if (!form) return;
-  const vacio = document.getElementById('checkout-vacio')!;
-  const contenido = document.getElementById('checkout-contenido')!;
+  const vacio = document.getElementById('checkout-vacio');
+  const contenido = document.getElementById('checkout-contenido');
+  if (!vacio || !contenido) return;
+
   const lineas = lineasDelCarrito();
-  if (lineas.length === 0) {
-    vacio.hidden = false;
-    contenido.hidden = true;
+  const estaVacio = lineas.length === 0;
+
+  vacio.hidden = !estaVacio;
+  contenido.hidden = estaVacio;
+
+  // Deshabilitar o habilitar controles del formulario según el estado
+  form.querySelectorAll<HTMLInputElement | HTMLButtonElement | HTMLSelectElement | HTMLTextAreaElement>(
+    'input, button, select, textarea',
+  ).forEach((el) => {
+    el.disabled = estaVacio;
+  });
+
+  if (estaVacio) {
     return;
   }
 
@@ -444,4 +456,5 @@ iniciarConfirmacion();
 window.addEventListener('storage', () => {
   actualizarContador();
   pintarCarrito();
+  iniciarCheckout();
 });

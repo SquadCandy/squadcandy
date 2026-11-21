@@ -7,7 +7,9 @@ const whatsappGeneral = enlaceWhatsApp(contacto.whatsapp, contacto.mensaje);
 
 // Producto principal destacado para la vitrina del Hero
 const productoPrincipal = productos[0];
-const imagenHero = productoPrincipal ? productoPrincipal.imagen : portada.imagen;
+const imagenHero = productoPrincipal
+  ? productoPrincipal.imagen
+  : portada.imagen;
 ---
 
 <Base
@@ -22,7 +24,10 @@ const imagenHero = productoPrincipal ? productoPrincipal.imagen : portada.imagen
         <div class="portada-grid">
           <div class="portada-texto">
             <span class="hero-insignia">
-              ⭐ {productoPrincipal ? 'Producto destacado' : 'Lo mejor de nuestra tienda'}
+              ⭐{" "}
+              {productoPrincipal
+                ? "Producto destacado"
+                : "Lo mejor de nuestra tienda"}
             </span>
             <h1>{portada.titulo}</h1>
             <p>{portada.subtitulo}</p>
@@ -31,9 +36,11 @@ const imagenHero = productoPrincipal ? productoPrincipal.imagen : portada.imagen
               <div class="hero-producto-box">
                 <div class="hero-producto-info">
                   <span class="hero-producto-tag">
-                    {productoPrincipal.etiqueta || 'Recomendado'}
+                    {productoPrincipal.etiqueta || "Recomendado"}
                   </span>
-                  <span class="hero-producto-nombre">{productoPrincipal.nombre}</span>
+                  <span class="hero-producto-nombre">
+                    {productoPrincipal.nombre}
+                  </span>
                 </div>
                 <div class="hero-producto-precio">
                   {precio(productoPrincipal.precio)}
@@ -68,7 +75,7 @@ const imagenHero = productoPrincipal ? productoPrincipal.imagen : portada.imagen
                 </button>
               )}
               <a class="boton boton-borde" href="#productos">
-                {portada.textoBoton || 'Ver productos'}
+                {portada.textoBoton || "Ver productos"}
               </a>
             </div>
           </div>
@@ -76,11 +83,17 @@ const imagenHero = productoPrincipal ? productoPrincipal.imagen : portada.imagen
           <div class="portada-imagen">
             <div class="hero-tarjeta-foto">
               {productoPrincipal?.etiqueta && (
-                <span class="hero-badge-flotante">{productoPrincipal.etiqueta}</span>
+                <span class="hero-badge-flotante">
+                  {productoPrincipal.etiqueta}
+                </span>
               )}
               <img
                 src={url(imagenHero)}
-                alt={productoPrincipal ? productoPrincipal.nombre : `Productos de ${marca.nombre}`}
+                alt={
+                  productoPrincipal
+                    ? productoPrincipal.nombre
+                    : `Productos de ${marca.nombre}`
+                }
                 width="800"
                 height="600"
                 loading="eager"
@@ -99,7 +112,17 @@ const imagenHero = productoPrincipal ? productoPrincipal.imagen : portada.imagen
         <!-- Barra de confianza y beneficios rápidos (tipo Falabella/Tottus) -->
         <div class="hero-beneficios">
           <div class="hero-beneficio-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
               <rect x="1" y="3" width="15" height="13" />
               <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
               <circle cx="5.5" cy="18.5" r="2.5" />
@@ -111,7 +134,17 @@ const imagenHero = productoPrincipal ? productoPrincipal.imagen : portada.imagen
             </div>
           </div>
           <div class="hero-beneficio-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
             </svg>
             <div>
@@ -120,7 +153,17 @@ const imagenHero = productoPrincipal ? productoPrincipal.imagen : portada.imagen
             </div>
           </div>
           <div class="hero-beneficio-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
               <rect width="20" height="12" x="2" y="6" rx="2" />
               <circle cx="12" cy="12" r="2" />
               <path d="M6 12h.01M18 12h.01" />
@@ -131,7 +174,17 @@ const imagenHero = productoPrincipal ? productoPrincipal.imagen : portada.imagen
             </div>
           </div>
           <div class="hero-beneficio-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg>
             <div>
@@ -165,7 +218,7 @@ const imagenHero = productoPrincipal ? productoPrincipal.imagen : portada.imagen
                 <h3>{p.nombre}</h3>
                 <span class="precio">{precio(p.precio)}</span>
               </div>
-              <p>{p.descripcion}</p>
+              <p class="producto-descripcion">{p.descripcion}</p>
               <button
                 type="button"
                 class="boton"

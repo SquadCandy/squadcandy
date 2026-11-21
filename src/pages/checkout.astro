@@ -18,10 +18,27 @@ const costo =
     <div class="contenedor">
       <h1>Finalizar compra</h1>
 
-      <div id="checkout-vacio" hidden>
-        <p>Tu carrito está vacío, así que no hay nada que pagar todavía.</p>
+      <div id="checkout-vacio" class="checkout-vacio" hidden>
+        <div class="checkout-vacio-icono" aria-hidden="true">
+          <svg
+            width="38"
+            height="38"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="8" cy="21" r="1" />
+            <circle cx="19" cy="21" r="1" />
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+          </svg>
+        </div>
+        <h2>Tu carrito está vacío</h2>
+        <p>Aún no has agregado ningún producto para realizar tu pedido.</p>
         <a class="boton" href={`${rutas.inicio}#productos`}>
-          Ver productos
+          Ir a comprar productos
         </a>
       </div>
 
