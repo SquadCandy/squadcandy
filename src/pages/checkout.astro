@@ -1,18 +1,28 @@
 ---
-import Base from '../layouts/Base.astro';
-import { marca, url, rutas } from '../lib/datos';
+import Base from "../layouts/Base.astro";
+import { marca, url, rutas } from "../lib/datos";
 
 const { tienda, pagos } = marca;
-const costo = tienda.costoDelivery === 0 ? 'gratis' : `+ S/ ${tienda.costoDelivery.toFixed(2)}`;
+const costo =
+  tienda.costoDelivery === 0
+    ? "gratis"
+    : `+ S/ ${tienda.costoDelivery.toFixed(2)}`;
 ---
-<Base titulo={`Finalizar compra | ${marca.nombre}`} descripcion="Completa tus datos para confirmar el pedido" pagina="checkout">
+
+<Base
+  titulo={`Finalizar compra | ${marca.nombre}`}
+  descripcion="Completa tus datos para confirmar el pedido"
+  pagina="checkout"
+>
   <main class="pagina">
     <div class="contenedor">
       <h1>Finalizar compra</h1>
 
       <div id="checkout-vacio" hidden>
         <p>Tu carrito está vacío, así que no hay nada que pagar todavía.</p>
-        <a class="boton" href={`${rutas.inicio}#productos`}>Ver productos</a>
+        <a class="boton" href={`${rutas.inicio}#productos`}>
+          Ver productos
+        </a>
       </div>
 
       <div id="checkout-contenido" class="checkout">
@@ -21,17 +31,42 @@ const costo = tienda.costoDelivery === 0 ? 'gratis' : `+ S/ ${tienda.costoDelive
             <legend>1. Tus datos de contacto</legend>
             <div class="campo">
               <label for="nombre">Nombre completo</label>
-              <input id="nombre" name="nombre" type="text" autocomplete="name" aria-describedby="err-nombre" />
+              <input
+                id="nombre"
+                name="nombre"
+                type="text"
+                placeholder="Ej. María Sánchez"
+                autocomplete="name"
+                aria-describedby="err-nombre"
+                required
+              />
               <p class="error" id="err-nombre" hidden></p>
             </div>
             <div class="campo">
               <label for="celular">Celular</label>
-              <input id="celular" name="celular" type="tel" inputmode="numeric" maxlength="9" placeholder="9 dígitos" autocomplete="tel-national" aria-describedby="err-celular" />
+              <input
+                id="celular"
+                name="celular"
+                type="tel"
+                inputmode="numeric"
+                maxlength="9"
+                placeholder="Ej. 987654321"
+                autocomplete="tel-national"
+                aria-describedby="err-celular"
+                required
+              />
               <p class="error" id="err-celular" hidden></p>
             </div>
             <div class="campo">
               <label for="correo">Correo (opcional)</label>
-              <input id="correo" name="correo" type="email" autocomplete="email" aria-describedby="err-correo" />
+              <input
+                id="correo"
+                name="correo"
+                type="email"
+                placeholder="ejemplo@correo.com"
+                autocomplete="email"
+                aria-describedby="err-correo"
+              />
               <p class="error" id="err-correo" hidden></p>
             </div>
           </fieldset>
@@ -40,23 +75,74 @@ const costo = tienda.costoDelivery === 0 ? 'gratis' : `+ S/ ${tienda.costoDelive
             <legend>2. Entrega</legend>
             <label class="opcion">
               <input type="radio" name="entrega" value="recojo" checked />
-              <span><strong>Recojo</strong> <small>({tienda.recojo})</small></span>
+              <svg
+                class="opcion-icono"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                <polyline points="9 22 9 12 15 12 15 22" />
+              </svg>
+              <span>
+                <strong>Recojo</strong> <small>({tienda.recojo})</small>
+              </span>
             </label>
             {tienda.ofreceDelivery && (
               <label class="opcion">
                 <input type="radio" name="entrega" value="delivery" />
-                <span><strong>Delivery</strong> <small>({costo}) {tienda.delivery}</small></span>
+                <svg
+                  class="opcion-icono"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="1" y="3" width="15" height="13" />
+                  <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+                  <circle cx="5.5" cy="18.5" r="2.5" />
+                  <circle cx="18.5" cy="18.5" r="2.5" />
+                </svg>
+                <span>
+                  <strong>Delivery</strong>{" "}
+                  <small>
+                    ({costo}) {tienda.delivery}
+                  </small>
+                </span>
               </label>
             )}
             <div id="datos-delivery" hidden>
               <div class="campo">
                 <label for="direccion">Dirección</label>
-                <input id="direccion" name="direccion" type="text" autocomplete="street-address" aria-describedby="err-direccion" />
+                <input
+                  id="direccion"
+                  name="direccion"
+                  type="text"
+                  placeholder="Ej. Av. Los Próceres 450, Dpto 302"
+                  autocomplete="street-address"
+                  aria-describedby="err-direccion"
+                />
                 <p class="error" id="err-direccion" hidden></p>
               </div>
               <div class="campo">
                 <label for="referencia">Referencia (opcional)</label>
-                <input id="referencia" name="referencia" type="text" />
+                <input
+                  id="referencia"
+                  name="referencia"
+                  type="text"
+                  placeholder="Ej. Frente al parque, rejas negras"
+                />
               </div>
             </div>
           </fieldset>
@@ -64,12 +150,52 @@ const costo = tienda.costoDelivery === 0 ? 'gratis' : `+ S/ ${tienda.costoDelive
           <fieldset>
             <legend>3. Método de pago</legend>
             <label class="opcion">
-              <input type="radio" name="pago" value="efectivo" aria-describedby="err-pago" />
-              <span><strong>Efectivo</strong></span>
+              <input
+                type="radio"
+                name="pago"
+                value="efectivo"
+                aria-describedby="err-pago"
+              />
+              <svg
+                class="opcion-icono"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect width="20" height="12" x="2" y="6" rx="2" />
+                <circle cx="12" cy="12" r="2" />
+                <path d="M6 12h.01M18 12h.01" />
+              </svg>
+              <span>
+                <strong>Efectivo</strong>
+              </span>
             </label>
             <label class="opcion">
               <input type="radio" name="pago" value="yapeplin" />
-              <span><strong>Yape / Plin</strong></span>
+              <svg
+                class="opcion-icono"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+                <path d="M12 18h.01" />
+              </svg>
+              <span>
+                <strong>Yape / Plin</strong>
+              </span>
             </label>
             <p class="error" id="err-pago" hidden></p>
 
@@ -78,15 +204,37 @@ const costo = tienda.costoDelivery === 0 ? 'gratis' : `+ S/ ${tienda.costoDelive
             </div>
             <div class="aviso-pago" id="panel-yapeplin" hidden>
               <p>{pagos.yapePlin.instrucciones}</p>
-              <p>Número: <strong>{pagos.yapePlin.numero}</strong> · Titular: <strong>{pagos.yapePlin.titular}</strong></p>
-              {pagos.yapePlin.qr
-                ? <img class="qr" src={url(pagos.yapePlin.qr)} alt="Código QR para pagar" width="160" height="160" />
-                : <div class="qr qr-ejemplo" role="img" aria-label="Espacio para el código QR">QR de ejemplo</div>}
+              <p>
+                Número: <strong>{pagos.yapePlin.numero}</strong> · Titular:{" "}
+                <strong>{pagos.yapePlin.titular}</strong>
+              </p>
+              {pagos.yapePlin.qr ? (
+                <img
+                  class="qr"
+                  src={url(pagos.yapePlin.qr)}
+                  alt="Código QR para pagar"
+                  width="160"
+                  height="160"
+                />
+              ) : (
+                <div
+                  class="qr qr-ejemplo"
+                  role="img"
+                  aria-label="Espacio para el código QR"
+                >
+                  QR de ejemplo
+                </div>
+              )}
             </div>
           </fieldset>
 
-          <button type="submit" class="boton">Confirmar pedido</button>
-          <p class="nota">Aún no se envía nada: en el siguiente paso enviarás tu pedido por WhatsApp.</p>
+          <button type="submit" class="boton">
+            Confirmar pedido
+          </button>
+          <p class="nota">
+            Aún no se envía nada: en el siguiente paso enviarás tu pedido por
+            WhatsApp.
+          </p>
         </form>
 
         <aside class="resumen" aria-label="Resumen del pedido">

@@ -1,25 +1,149 @@
 ---
-import Base from '../layouts/Base.astro';
-import { marca, productos, url, precio, enlaceWhatsApp } from '../lib/datos';
+import Base from "../layouts/Base.astro";
+import { marca, productos, url, precio, enlaceWhatsApp } from "../lib/datos";
 
 const { portada, nosotros, contacto } = marca;
 const whatsappGeneral = enlaceWhatsApp(contacto.whatsapp, contacto.mensaje);
+
+// Producto principal destacado para la vitrina del Hero
+const productoPrincipal = productos[0];
+const imagenHero = productoPrincipal ? productoPrincipal.imagen : portada.imagen;
 ---
-<Base titulo={`${marca.nombre} | ${marca.eslogan}`} descripcion={portada.subtitulo} pagina="inicio">
+
+<Base
+  titulo={`${marca.nombre} | ${marca.eslogan}`}
+  descripcion={portada.subtitulo}
+  pagina="inicio"
+>
   <main>
+    <!-- HERO BANNER COMERCIAL ESTILO RETAIL -->
     <section class="portada" id="inicio">
       <div class="contenedor">
-        <div class="portada-texto">
-          <h1>{portada.titulo}</h1>
-          <p>{portada.subtitulo}</p>
-          <a class="boton" href="#productos">{portada.textoBoton}</a>
+        <div class="portada-grid">
+          <div class="portada-texto">
+            <span class="hero-insignia">
+              ⭐ {productoPrincipal ? 'Producto destacado' : 'Lo mejor de nuestra tienda'}
+            </span>
+            <h1>{portada.titulo}</h1>
+            <p>{portada.subtitulo}</p>
+
+            {productoPrincipal && (
+              <div class="hero-producto-box">
+                <div class="hero-producto-info">
+                  <span class="hero-producto-tag">
+                    {productoPrincipal.etiqueta || 'Recomendado'}
+                  </span>
+                  <span class="hero-producto-nombre">{productoPrincipal.nombre}</span>
+                </div>
+                <div class="hero-producto-precio">
+                  {precio(productoPrincipal.precio)}
+                </div>
+              </div>
+            )}
+
+            <div class="hero-acciones">
+              {productoPrincipal && (
+                <button
+                  type="button"
+                  class="boton boton-hero"
+                  data-agregar={productoPrincipal.id}
+                  data-nombre={productoPrincipal.nombre}
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <path d="M16 10a4 4 0 0 1-8 0" />
+                  </svg>
+                  <span>Añadir al carrito</span>
+                </button>
+              )}
+              <a class="boton boton-borde" href="#productos">
+                {portada.textoBoton || 'Ver productos'}
+              </a>
+            </div>
+          </div>
+
+          <div class="portada-imagen">
+            <div class="hero-tarjeta-foto">
+              {productoPrincipal?.etiqueta && (
+                <span class="hero-badge-flotante">{productoPrincipal.etiqueta}</span>
+              )}
+              <img
+                src={url(imagenHero)}
+                alt={productoPrincipal ? productoPrincipal.nombre : `Productos de ${marca.nombre}`}
+                width="800"
+                height="600"
+                loading="eager"
+                fetchpriority="high"
+              />
+              {productoPrincipal && (
+                <div class="hero-precio-flotante">
+                  <span class="hero-precio-flotante-label">Precio</span>
+                  <strong>{precio(productoPrincipal.precio)}</strong>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
-        <div class="portada-imagen">
-          <img src={url(portada.imagen)} alt={`Productos de ${marca.nombre}`} width="800" height="600" />
+
+        <!-- Barra de confianza y beneficios rápidos (tipo Falabella/Tottus) -->
+        <div class="hero-beneficios">
+          <div class="hero-beneficio-item">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="1" y="3" width="15" height="13" />
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+              <circle cx="5.5" cy="18.5" r="2.5" />
+              <circle cx="18.5" cy="18.5" r="2.5" />
+            </svg>
+            <div>
+              <strong>Delivery en tu zona</strong>
+              <small>Coordinación directa y rápida</small>
+            </div>
+          </div>
+          <div class="hero-beneficio-item">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            <div>
+              <strong>Atención por WhatsApp</strong>
+              <small>Consultas y pedidos al instante</small>
+            </div>
+          </div>
+          <div class="hero-beneficio-item">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect width="20" height="12" x="2" y="6" rx="2" />
+              <circle cx="12" cy="12" r="2" />
+              <path d="M6 12h.01M18 12h.01" />
+            </svg>
+            <div>
+              <strong>Yape, Plin o Efectivo</strong>
+              <small>Múltiples opciones de pago</small>
+            </div>
+          </div>
+          <div class="hero-beneficio-item">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            <div>
+              <strong>Compra 100% segura</strong>
+              <small>Calidad y atención directa</small>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- CATÁLOGO DE PRODUCTOS -->
     <section class="seccion" id="productos">
       <div class="contenedor">
         <h2>Nuestros productos</h2>
@@ -27,7 +151,14 @@ const whatsappGeneral = enlaceWhatsApp(contacto.whatsapp, contacto.mensaje);
           {productos.map((p) => (
             <li class="producto">
               <div class="producto-foto">
-                <img src={url(p.imagen)} alt={p.nombre} width="800" height="600" loading="lazy" />
+                <img
+                  src={url(p.imagen)}
+                  alt={p.nombre}
+                  width="800"
+                  height="600"
+                  loading="lazy"
+                  decoding="async"
+                />
                 {p.etiqueta && <span class="etiqueta">{p.etiqueta}</span>}
               </div>
               <div class="producto-cabecera">
@@ -35,7 +166,12 @@ const whatsappGeneral = enlaceWhatsApp(contacto.whatsapp, contacto.mensaje);
                 <span class="precio">{precio(p.precio)}</span>
               </div>
               <p>{p.descripcion}</p>
-              <button type="button" class="boton" data-agregar={p.id} data-nombre={p.nombre}>
+              <button
+                type="button"
+                class="boton"
+                data-agregar={p.id}
+                data-nombre={p.nombre}
+              >
                 Añadir al carrito
               </button>
             </li>
@@ -44,6 +180,7 @@ const whatsappGeneral = enlaceWhatsApp(contacto.whatsapp, contacto.mensaje);
       </div>
     </section>
 
+    <!-- SECCIÓN NOSOTROS -->
     <section class="seccion nosotros" id="nosotros">
       <div class="contenedor">
         <h2>{nosotros.titulo}</h2>
@@ -51,24 +188,92 @@ const whatsappGeneral = enlaceWhatsApp(contacto.whatsapp, contacto.mensaje);
           <p>{nosotros.texto}</p>
           {nosotros.puntos.length > 0 && (
             <ul class="puntos">
-              {nosotros.puntos.map((punto) => <li>{punto}</li>)}
+              {nosotros.puntos.map((punto) => (
+                <li>{punto}</li>
+              ))}
             </ul>
           )}
         </div>
       </div>
     </section>
 
+    <!-- SECCIÓN CONTACTO -->
     <section class="contacto" id="contacto">
       <div class="contenedor">
         <h2>¿Tienes una consulta antes de comprar?</h2>
         <p>{contacto.horario}</p>
-        <a class="boton boton-claro" href={whatsappGeneral} target="_blank" rel="noopener">
+        <a
+          class="boton boton-claro"
+          href={whatsappGeneral}
+          target="_blank"
+          rel="noopener"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            style="margin-right: 0.5rem; vertical-align: middle; display: inline-block;"
+          >
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
           Escríbenos por WhatsApp
         </a>
         {(contacto.instagram || contacto.facebook) && (
           <p class="redes">
-            {contacto.instagram && <a href={contacto.instagram} target="_blank" rel="noopener">Instagram</a>}
-            {contacto.facebook && <a href={contacto.facebook} target="_blank" rel="noopener">Facebook</a>}
+            {contacto.instagram && (
+              <a
+                href={contacto.instagram}
+                target="_blank"
+                rel="noopener"
+                aria-label="Síguenos en Instagram"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                </svg>
+                <span>Instagram</span>
+              </a>
+            )}
+            {contacto.facebook && (
+              <a
+                href={contacto.facebook}
+                target="_blank"
+                rel="noopener"
+                aria-label="Síguenos en Facebook"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+                <span>Facebook</span>
+              </a>
+            )}
           </p>
         )}
       </div>

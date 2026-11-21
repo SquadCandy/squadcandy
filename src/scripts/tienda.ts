@@ -73,12 +73,25 @@ function setCarrito(items: Item[]) {
   guardar(CLAVE_CARRITO, items);
   actualizarContador();
 }
+function rebotarContador() {
+  document.querySelectorAll<HTMLElement>('.contador').forEach((badge) => {
+    badge.animate(
+      [
+        { transform: 'scale(1)' },
+        { transform: 'scale(1.35)' },
+        { transform: 'scale(1)' },
+      ],
+      { duration: 280, easing: 'ease-out' },
+    );
+  });
+}
 function agregar(id: string) {
   const items = getCarrito();
   const existente = items.find((i) => i.id === id);
   if (existente) existente.cantidad = Math.min(MAX_POR_PRODUCTO, existente.cantidad + 1);
   else items.push({ id, cantidad: 1 });
   setCarrito(items);
+  rebotarContador();
 }
 function cambiarCantidad(id: string, delta: number) {
   const items = getCarrito()
@@ -106,6 +119,11 @@ function h(tag: string, props: Record<string, string> = {}, ...hijos: (Node | st
   }
   e.append(...hijos);
   return e;
+}
+function crearInsigniaSvg(): HTMLElement {
+  const div = document.createElement('div');
+  div.innerHTML = `<svg class="insignia-svg" viewBox="0 0 72 72" fill="none" aria-hidden="true"><circle class="insignia-circulo" cx="36" cy="36" r="32" /><path class="insignia-check" d="M22 36l10 10 18-18" /></svg>`;
+  return (div.firstElementChild as HTMLElement) || h('p', { class: 'insignia', 'aria-hidden': 'true' }, '✔');
 }
 function anunciar(texto: string) {
   const zona = document.getElementById('anuncios');
@@ -168,10 +186,13 @@ function pintarCarrito() {
   const lineas = lineasDelCarrito();
 
   if (lineas.length === 0) {
-    cont.replaceChildren(
+    const vacio = h(
+      'div',
+      { class: 'carrito-vacio' },
       h('p', {}, 'Tu carrito está vacío. Añade productos para empezar tu pedido.'),
       h('a', { class: 'boton', href: `${cfg.rutas.inicio}#productos` }, 'Ver productos'),
     );
+    cont.replaceChildren(vacio);
     return;
   }
 
@@ -181,7 +202,7 @@ function pintarCarrito() {
     lista.append(
       h(
         'li',
-        { class: 'carrito-fila' },
+        { class: 'carrito-fila anadido-animacion' },
         h('img', { src: p.imagen, alt: '', width: '88', height: '66' }),
         h(
           'div',
@@ -263,11 +284,42 @@ function iniciarCheckout() {
   refrescar();
 
   const poner = (id: string, mensaje: string) => {
-    const e = document.getElementById(`err-${id}`)!;
-    e.textContent = mensaje;
-    e.hidden = !mensaje;
+    const e = document.getElementById(`err-${id}`);
+    if (e) {
+      e.textContent = mensaje;
+      e.hidden = !mensaje;
+    }
     document.getElementById(id)?.setAttribute('aria-invalid', mensaje ? 'true' : 'false');
   };
+
+  // Feedback en tiempo real para mejorar UX
+  const celularInput = form.querySelector<HTMLInputElement>('#celular');
+  if (celularInput) {
+    celularInput.addEventListener('input', () => {
+      celularInput.value = celularInput.value.replace(/\D/g, '').slice(0, 9);
+      if (/^9\d{8}$/.test(celularInput.value)) {
+        poner('celular', '');
+      }
+    });
+  }
+
+  const nombreInput = form.querySelector<HTMLInputElement>('#nombre');
+  if (nombreInput) {
+    nombreInput.addEventListener('input', () => {
+      if (nombreInput.value.trim().length >= 3) {
+        poner('nombre', '');
+      }
+    });
+  }
+
+  const direccionInput = form.querySelector<HTMLInputElement>('#direccion');
+  if (direccionInput) {
+    direccionInput.addEventListener('input', () => {
+      if (direccionInput.value.trim().length >= 5) {
+        poner('direccion', '');
+      }
+    });
+  }
 
   form.addEventListener('submit', (ev) => {
     ev.preventDefault();
@@ -362,7 +414,7 @@ function iniciarConfirmacion() {
   );
 
   cont.replaceChildren(
-    h('p', { class: 'insignia', 'aria-hidden': 'true' }, '✔'),
+    crearInsigniaSvg(),
     h('h1', {}, '¡Gracias por tu pedido!'),
     h('p', { class: 'numero-pedido' }, `Pedido N.º ${p.numero}`),
     h('p', {}, 'Tu pedido todavía no se ha enviado. Falta un último paso:'),
