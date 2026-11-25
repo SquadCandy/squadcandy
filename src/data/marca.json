@@ -1,9 +1,9 @@
 {
-  "nombre": "Mi Tienda",
+  "nombre": "",
   "eslogan": "Escribe aquí tu eslogan",
-  "logo": "logo.svg",
+  "logo": "logo.avif",
   "colores": {
-    "principal": "#1F6F5B",
+    "principal": "#BA1650",
     "secundario": "#F4B942",
     "fondo": "#F6F8F7",
     "texto": "#1B2430"
@@ -14,14 +14,19 @@
   },
   "esquinas": "suaves",
   "portada": {
-    "titulo": "Escribe aquí la frase principal de tu tienda",
-    "subtitulo": "Cuenta en una o dos líneas qué vendes y por qué es especial.",
-    "imagen": "productos/producto-1.svg",
-    "textoBoton": "Ver productos"
+    "insignia": "⭐ Especialidad de la casa",
+    "titulo": "Los mejores cheesecakes de la ciudad",
+    "subtitulo": "Disfruta de nuestros productos recién horneados y con ingredientes de calidad",
+    "destaque": "100% Fresco y artesanal",
+    "etiqueta": "Favorito",
+    "imagen": "productos/producto-nuevo-1.jpg",
+    "textoBoton": "Ver catálogo",
+    "enlaceBoton": "#productos",
+    "textoBotonSecundario": "Pedir por WhatsApp"
   },
   "nosotros": {
-    "titulo": "Quiénes somos",
-    "texto": "Somos estudiantes de 5.° de secundaria y creamos esta tienda durante el curso de Educación para el Trabajo. Aquí cuentas cómo nació tu idea y qué problema resuelve.",
+    "titulo": "Somos SquAD",
+    "texto": "Nuestro emprendimiento nace desde el trabajo de un proyecto escolar, con el objetivo de ofrecer productos de calidad y deliciosos a nuestros clientes. Nos esforzamos por brindar un servicio excepcional y crear experiencias memorables para todos los que prueban nuestros productos.",
     "puntos": [
       "Productos hechos con cuidado",
       "Precios justos",

@@ -42,13 +42,15 @@ const consulta = enlaceWhatsApp(
           <img
             src={url(marca.logo)}
             alt=""
-            width="48"
-            height="48"
+            width="120"
             loading="eager"
           />
-          <span>{marca.nombre}</span>
+          { marca.nombre && (
+            <span>{marca.nombre}</span>
+          )}
         </a>
         <nav class="menu" aria-label="Principal">
+          <a href={rutas.inicio}>Inicio</a>
           <a href={`${rutas.inicio}#productos`}>Productos</a>
           <a href={`${rutas.inicio}#nosotros`}>Nosotros</a>
           <a class="carrito-enlace" href={rutas.carrito}>

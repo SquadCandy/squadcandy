@@ -25,7 +25,7 @@ const enlaceOpcional = z.union([
 ]);
 
 const esquemaMarca = z.object({
-  nombre: z.string().min(2, "Es muy corto").max(40, "Máximo 40 caracteres"),
+  nombre: z.string().min(0, "Es muy corto").max(40, "Máximo 40 caracteres"),
   eslogan: z.string().max(80, "Máximo 80 caracteres"),
   logo: z.string().min(1, "Escribe el nombre del archivo del logo"),
   colores: z.object({
@@ -48,6 +48,12 @@ const esquemaMarca = z.object({
       .string()
       .min(1, "No puede estar vacío")
       .max(25, "Máximo 25 caracteres"),
+    insignia: z.string().max(60, "Máximo 60 caracteres").optional(),
+    etiqueta: z.string().max(40, "Máximo 40 caracteres").optional(),
+    destaque: z.string().max(50, "Máximo 50 caracteres").optional(),
+    enlaceBoton: z.string().max(150, "Máximo 150 caracteres").optional(),
+    textoBotonSecundario: z.string().max(30, "Máximo 30 caracteres").optional(),
+    enlaceBotonSecundario: z.string().max(150, "Máximo 150 caracteres").optional(),
   }),
   nosotros: z.object({
     titulo: z.string().min(2, "Es muy corto").max(40, "Máximo 40 caracteres"),

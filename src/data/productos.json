@@ -1,31 +1,46 @@
 [
   {
     "id": "producto-1",
-    "nombre": "Nombre del producto 1",
-    "descripcion": "Escribe aquí una descripción corta y verdadera de tu producto.",
-    "precio": 12.5,
-    "imagen": "productos/producto-1.svg",
-    "etiqueta": "Nuevo"
+    "nombre": "Cheesecake de fresa",
+    "descripcion": "Cheesecake de fresa con crema y salsa de fresa",
+    "precio": 7,
+    "imagen": "productos/cheesecake-1.png",
+    "etiqueta": "Oferta"
   },
   {
     "id": "producto-2",
-    "nombre": "Nombre del producto 2",
-    "descripcion": "Máximo 110 caracteres: qué es, de qué está hecho o para qué sirve.",
+    "nombre": "Cheesecake de maracuyá",
+    "descripcion": "Cheesecake de maracuyá con crema y salsa de maracuyá",
     "precio": 8,
-    "imagen": "productos/producto-2.svg"
+    "imagen": "productos/cheesecake-2.avif"
   },
   {
     "id": "producto-3",
-    "nombre": "Nombre del producto 3",
-    "descripcion": "Cuenta lo más importante en una sola frase.",
+    "nombre": "Cheesecake de mango",
+    "descripcion": "Cheesecake de mango con crema y salsa de mango",
     "precio": 15,
-    "imagen": "productos/producto-3.svg"
+    "imagen": "productos/cheesecake-3.jpg"
   },
   {
     "id": "producto-4",
-    "nombre": "Nombre del producto 4",
-    "descripcion": "Recuerda: cada producto lleva su foto real y su precio en soles.",
-    "precio": 20,
-    "imagen": "productos/producto-4.svg"
+    "nombre": "Cheesecake de fresa",
+    "descripcion": "Cheesecake de fresa con crema y salsa de fresa",
+    "precio": 7,
+    "imagen": "productos/cheesecake-1.png",
+    "etiqueta": "Oferta"
+  },
+  {
+    "id": "producto-5",
+    "nombre": "Cheesecake de maracuyá",
+    "descripcion": "Cheesecake de maracuyá con crema y salsa de maracuyá",
+    "precio": 8,
+    "imagen": "productos/cheesecake-2.avif"
+  },
+  {
+    "id": "producto-6",
+    "nombre": "Cheesecake de mango",
+    "descripcion": "Cheesecake de mango con crema y salsa de mango",
+    "precio": 15,
+    "imagen": "productos/cheesecake-3.jpg"
   }
 ]
