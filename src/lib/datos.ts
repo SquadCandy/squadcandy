@@ -26,7 +26,7 @@ const enlaceOpcional = z.union([
 
 const esquemaMarca = z.object({
   nombre: z.string().min(0, "Es muy corto").max(40, "Máximo 40 caracteres"),
-  eslogan: z.string().max(80, "Máximo 80 caracteres"),
+  eslogan: z.string().max(200, "Máximo 200 caracteres"),
   logo: z.string().min(1, "Escribe el nombre del archivo del logo"),
   colores: z.object({
     principal: color,
@@ -117,10 +117,10 @@ const esquemaProductos = z
           "Usa solo minúsculas, números y guiones, sin espacios (ejemplo: pan-integral)",
         ),
       nombre: z.string().min(2, "Es muy corto").max(50, "Máximo 50 caracteres"),
-      descripcion: z.string().max(110, "Máximo 110 caracteres"),
+      descripcion: z.string().max(250, "Máximo 250 caracteres"),
       precio: z.number().positive("El precio debe ser mayor que 0"),
       imagen: z.string().min(1, "Escribe el nombre del archivo de la imagen"),
-      etiqueta: z.string().max(20, "Máximo 20 caracteres").optional(),
+      etiqueta: z.string().max(50, "Máximo 50 caracteres").optional(),
     }),
   )
   .min(1, "Agrega al menos un producto")

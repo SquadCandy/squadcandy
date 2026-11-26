@@ -1,46 +1,24 @@
 [
   {
     "id": "producto-1",
-    "nombre": "Cheesecake de fresa",
-    "descripcion": "Cheesecake de fresa con crema y salsa de fresa",
-    "precio": 7,
-    "imagen": "productos/cheesecake-1.png",
-    "etiqueta": "Oferta"
+    "nombre": "¡MOUSSE DE FRESA!",
+    "descripcion": "Es un mousse de fresa, ¿qué esperabas? Es una preparación culinaria dulce de textura ligera, cremosa y esponjosa, lograda al incorporar aire mediante ingredientes batidos. Solo que estos están hechos a base de fresa natural y sin preservantes.",
+    "precio": 6,
+    "imagen": "productos/producto 1 real.jpg",
+    "etiqueta": "Compra, que quiero plata"
   },
   {
     "id": "producto-2",
-    "nombre": "Cheesecake de maracuyá",
-    "descripcion": "Cheesecake de maracuyá con crema y salsa de maracuyá",
-    "precio": 8,
-    "imagen": "productos/cheesecake-2.avif"
+    "nombre": "¡MOUSSE DE MARACUYÁ, CAUSASSS!",
+    "descripcion": "Básicamente lo mismo, pero para los que son team maracuyá y hater de la fresa (odiar a las fresas es opcional).",
+    "precio": 6,
+    "imagen": "productos/producto 2.jpg"
   },
   {
     "id": "producto-3",
-    "nombre": "Cheesecake de mango",
-    "descripcion": "Cheesecake de mango con crema y salsa de mango",
-    "precio": 15,
-    "imagen": "productos/cheesecake-3.jpg"
-  },
-  {
-    "id": "producto-4",
-    "nombre": "Cheesecake de fresa",
-    "descripcion": "Cheesecake de fresa con crema y salsa de fresa",
-    "precio": 7,
-    "imagen": "productos/cheesecake-1.png",
-    "etiqueta": "Oferta"
-  },
-  {
-    "id": "producto-5",
-    "nombre": "Cheesecake de maracuyá",
-    "descripcion": "Cheesecake de maracuyá con crema y salsa de maracuyá",
-    "precio": 8,
-    "imagen": "productos/cheesecake-2.avif"
-  },
-  {
-    "id": "producto-6",
-    "nombre": "Cheesecake de mango",
-    "descripcion": "Cheesecake de mango con crema y salsa de mango",
-    "precio": 15,
-    "imagen": "productos/cheesecake-3.jpg"
+    "nombre": "¡MOUSSE DE FRESA X2!",
+    "descripcion": "Repetimos lo mismo del producto uno para que el catálogo no sea tan corto XD",
+    "precio": 6,
+    "imagen": "productos/producto 3.jpg"
   }
 ]

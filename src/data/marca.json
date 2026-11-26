@@ -1,7 +1,7 @@
 {
   "nombre": "",
-  "eslogan": "Escribe aquí tu eslogan",
-  "logo": "logo.avif",
+  "eslogan": "Yo estoy dispuesto porque usted... ¡TIENE UN AMIGO FIEL EN MÍ! (Siempre y cuando compre y nos pague)",
+  "logo": "Squad Candy.png",
   "colores": {
     "principal": "#BA1650",
     "secundario": "#F4B942",
@@ -9,23 +9,23 @@
     "texto": "#1B2430"
   },
   "fuentes": {
-    "titulo": "Bricolage Grotesque",
-    "cuerpo": "Figtree"
+    "titulo": "Matcha Style",
+    "cuerpo": "Pearlington Fragrances"
   },
   "esquinas": "suaves",
   "portada": {
     "insignia": "⭐ Especialidad de la casa",
-    "titulo": "Los mejores cheesecakes de la ciudad",
-    "subtitulo": "Disfruta de nuestros productos recién horneados y con ingredientes de calidad",
+    "titulo": "Si tu vida está salada, ¡ponle dulce con Squad Candy!",
+    "subtitulo": "Disfruta de nuestros productos con ingredientes de calidad",
     "destaque": "100% Fresco y artesanal",
     "etiqueta": "Favorito",
-    "imagen": "productos/producto-nuevo-1.jpg",
+    "imagen": "productos/producto 1 real.jpg",
     "textoBoton": "Ver catálogo",
     "enlaceBoton": "#productos",
     "textoBotonSecundario": "Pedir por WhatsApp"
   },
   "nosotros": {
-    "titulo": "Somos SquAD",
+    "titulo": "¡Somos Squad Candy! ¡WUUUUUUUUU!",
     "texto": "Nuestro emprendimiento nace desde el trabajo de un proyecto escolar, con el objetivo de ofrecer productos de calidad y deliciosos a nuestros clientes. Nos esforzamos por brindar un servicio excepcional y crear experiencias memorables para todos los que prueban nuestros productos.",
     "puntos": [
       "Productos hechos con cuidado",
@@ -34,24 +34,24 @@
     ]
   },
   "contacto": {
-    "whatsapp": "51900000000",
+    "whatsapp": "51955723039",
     "mensaje": "Hola, tengo una consulta sobre sus productos",
-    "horario": "Lunes a viernes, de 3:00 p. m. a 6:00 p. m.",
-    "instagram": "",
-    "facebook": ""
+    "horario": "Lunes a viernes, de 8.00 a. m. a 2:10 p. m.",
+    "facebook": "",
+    "instagram": ""
   },
   "tienda": {
     "recojo": "Recojo en el colegio (lugar y hora a coordinar por WhatsApp)",
-    "ofreceDelivery": true,
-    "delivery": "Delivery en tu zona (se coordina por WhatsApp)",
-    "costoDelivery": 3
+    "ofreceDelivery": false,
+    "delivery": "Delivery en tu zona.",
+    "costoDelivery": 0
   },
   "pagos": {
     "efectivo": "Pagas en efectivo al recibir o recoger tu pedido. Si puedes, ten el monto exacto.",
     "yapePlin": {
-      "numero": "900000000",
-      "titular": "Nombre de ejemplo",
-      "qr": "",
+      "numero": "920316012",
+      "titular": "Rosa Mary Chero Huertas",
+      "qr": "QR-qr.jpeg",
       "instrucciones": "Paga con Yape o Plin al número indicado y envía la captura del pago por WhatsApp."
     }
   }
